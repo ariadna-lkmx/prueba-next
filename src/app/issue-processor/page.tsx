@@ -37,9 +37,13 @@ export default function IssueProcessor() {
         // Start new issue
         const idMatch = line.match(/#(\d+)/);
         if (idMatch) {
+          // Get the title from the previous line and remove the word "Issue" if present
+          const title = lines[i - 1]?.trim() || '';
+          const cleanTitle = title.replace(/^Issue\s+/i, '');
+          
           currentIssue = {
             id: parseInt(idMatch[1]),
-            title: lines[i - 1]?.trim() || '',
+            title: cleanTitle,
             createdBy: '',
             createdAt: '',
             type: '',
