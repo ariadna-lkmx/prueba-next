@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 interface Issue {
   id: number;
@@ -14,11 +13,10 @@ interface Issue {
   updatedAt: string;
 }
 
-export default function LoginPage() {
+export default function IssueProcessor() {
   const [text, setText] = useState('');
   const [processedIssues, setProcessedIssues] = useState<Issue[]>([]);
   const [hasProcessed, setHasProcessed] = useState(false);
-  const router = useRouter();
 
   const processText = (inputText: string): Issue[] => {
     const issues: Issue[] = [];
